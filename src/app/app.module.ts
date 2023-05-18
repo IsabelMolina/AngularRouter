@@ -1,14 +1,28 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { HeroesListComponent } from './heroes-list/heroes-list.component';
+import { CrisisListComponent } from './crisis-list/crisis-list.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
+const appRoutes: Routes = [
+  { path: 'crisis-list', component: CrisisListComponent },
+  { path: 'heroes-list', component: HeroesListComponent },
+  { path: '', redirectTo: '/heroes-list', pathMatch: 'full'},
+];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeroesListComponent,
+    CrisisListComponent,
+    PageNotFoundComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(appRoutes),
   ],
   providers: [],
   bootstrap: [AppComponent]
